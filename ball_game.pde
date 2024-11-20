@@ -1,16 +1,22 @@
 board board1;
 block block1;
+float hitboxW = 100;
+float hitboxH = 30;
+float hitboxSX = 200;
+float hitboxSY = 200;
 boolean leftmove;
 boolean rightmove;
 boolean active;
 boolean gameover;
 PVector location;
 PVector velocity;
+String i = "Start";
 ArrayList<ball> balls = new ArrayList<ball>(); //Set ball array
 block[] blocks = new block[11];//set block array
 void setup(){
   //set size
  size(400,400);
+ 
  
  rectMode(CENTER);//Change the rectangle mode to center
   background(0,0,107);//Draw a blue background
@@ -45,8 +51,9 @@ void draw(){
   if(gameover == false && active == false){
   
   fill(255);
-  rect(200,200,100,30);
-  
+  rect(hitboxSX, hitboxSY, hitboxW, hitboxH);
+  fill(0);
+  text(i,238,211,100,30);
   }
   
   
@@ -147,8 +154,10 @@ void keyReleased(){
 }
 
 void mousePressed(){
+if (mouseX <= hitboxSX+hitboxW && mouseX > hitboxSX && mouseY <= hitboxSY + hitboxH && mouseY > hitboxSY) {
+    
+  active = true;
 
-
-
+  } 
 
 }
