@@ -2,14 +2,19 @@ class block{//Declare the block class
   
   PVector position;
   boolean alive;
+  Boolean Skillcheck;
+  Boolean Sucess;
+  float XValue;
   
   int health; 
+
 
   block(){//construct block class
     
     position = new PVector(random(50,350),random(200));
     alive = true;//Setting block is showed in the first time 
     health = 1;//Set the health value to 1 to facilitate the operation of the box disappearing after the collision
+    Skillcheck = false;
   }
   
   void drawblock(){
@@ -36,6 +41,27 @@ class block{//Declare the block class
   rect(wallX+27,wallY+3,3,21);
     }
   }
+  void drawAct(){
+   if(Skillcheck == true){
+    fill(150);
+    rect(position.x,position.y,20,20);
+    position.y += 1;
+   
+    }
+  }
+  void Checkcondition(){
+    if(alive == false){
+      XValue = random(0,2);
+       if(XValue <= 1){
+         MakeAct();
+       
+       }
+    }
+  }
+  void MakeAct(){
+     Skillcheck = true;
+    
+  }
   boolean checkball(PVector ballposition){
     
   if(alive == true){
@@ -46,6 +72,7 @@ class block{//Declare the block class
      //I still don't know the reason, and I hope you can help me answer it in the assessment comments
       if(health <= 0 ){
        alive = false;
+       Checkcondition();
      }
      return true;//A collision is declared when the ball overlaps with the block
     }

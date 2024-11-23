@@ -2,12 +2,13 @@ class ball{
   //Declare the ball class
   PVector velocity;
   PVector position;
-  
+  PVector acceleration;
 
   ball(){//construct ball class
     
     position = new PVector(random(50, 250),random(150, 200));
     velocity = new PVector(-1,random(-1,-2));
+    acceleration = new PVector(0.01, 0.05);
   
   }
 
@@ -50,6 +51,7 @@ void checkedge(board a){//Check whether it meets the ejection standard and perfo
       if(blocks[a].checkball(position)){//Here we refer to the checkball function in the block to detect the collision between the ball and the block
         
        velocity.y *= -1;
+       velocity.add(acceleration);
        
        break;//Exit the loop after ejection to avoid bugs
       }
