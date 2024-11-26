@@ -27,7 +27,7 @@ void setup(){
 
  board1 = new board(location.x,location.y);//Declare the board1 is board class
  
- active = true;
+ active = false;
  gameover = false;
  
  //Initialize block array
