@@ -13,6 +13,7 @@ PVector velocity;
 String i = "Start";
 ArrayList<ball> balls = new ArrayList<ball>(); //Set ball array
 block[] blocks = new block[11];//set block array
+
 void setup(){
   //set size
  size(400,400);
@@ -34,6 +35,7 @@ void setup(){
  
  active = false;
  gameover = false;
+ 
  //Initialize block array
  for(int a = 0; a < blocks.length; a++){
    blocks[a] = new block();
@@ -64,18 +66,23 @@ void draw(){
   //ground
   fill(149,127,81);//Set the fill color of the graph to brown
   rect(200,360,400,80);//Draw a yellow ground
+  
   //drawboard
   board1.drawboard();//draw board
   
 
-  
   rectMode(CORNER);//I copied this box code directly from the previous assignment, when I used rectmode as Corner
   
   
   //drawblocks
   for(int a = 0; a < blocks.length; a++){//Iterating through an array of blocks with a for loop generates 11 blocks
   blocks[a].drawblock();//Because the number in the array replaces A or A is now facilitating the array it's equivalent to drawblock running 11 times
+  blocks[a].drawAct();
+  
+  if(board1.Checkskill(blocks[a])){
+  balls.add(new ball());
   }
+}
   
   //draw balls
   for (int i = 0; i < balls.size(); i++) {//Use the for loop to iterate through the group to generate the ball
