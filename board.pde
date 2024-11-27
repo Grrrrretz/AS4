@@ -16,9 +16,12 @@ void drawboard(){
  }
  
 boolean Checkskill(block skill) {
-    if(skill.Skillcheck && skill.position.y + 10 >= position.y - 5 && skill.position.x > position.x - 20 && skill.position.x < position.x + 20){
+    if(skill.Skillcheck && skill.position.y + 10 >= position.y - 5 && skill.position.x > position.x - 20 && skill.position.x < position.x + 20 ){
       skill.Skillcheck = false;
       return true;
+    }
+    if (skill.position.y > position.y + 5) {
+        skill.Skillcheck = false;
     }
     return false;
   }

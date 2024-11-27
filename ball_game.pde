@@ -14,16 +14,23 @@ String i = "Start";
 ArrayList<ball> balls = new ArrayList<ball>(); //Set ball array
 block[] blocks = new block[11];//set block array
 
+import org.gicentre.handy.*;
+
+HandyRenderer h; 
+
 void setup(){
+  
   //set size
  size(400,400);
+ 
+ h = new HandyRenderer(this);
  
  
  rectMode(CENTER);//Change the rectangle mode to center
   background(0,0,107);//Draw a blue background
   //ground
   fill(149,127,81);//Set the fill color of the graph to brown
-  rect(200,360,400,80);//Draw a yellow ground
+  h.rect(200,360,400,80);//Draw a yellow ground
  
  leftmove =false;//Initializes the movement Control
  rightmove = false;//Initializes the movement Control
@@ -53,7 +60,7 @@ void draw(){
   if(gameover == false && active == false){
   
   fill(255);
-  rect(hitboxSX, hitboxSY, hitboxW, hitboxH);
+  h.rect(hitboxSX, hitboxSY, hitboxW, hitboxH);
   fill(0);
   text(i,238,211,100,30);
   }
@@ -98,7 +105,7 @@ void draw(){
   fill(149,127,81);
   //Because there is no way to solve the bug that the ball is directly under the board, the move function of the ball class added the decision that if the ball is directly under the board，
   //it will immediately send to the bottom of the screen to reset the ball, but because the animation is too abrupt, a layer of ground was added to hide it.
-  rect(200,360,400,80);
+  h.rect(200,360,400,80);
   //leftmove
   if(leftmove == true){//Use boolean to control the move of board.
     

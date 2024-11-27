@@ -15,7 +15,7 @@ class ball{
 void drawball(){
   
   fill(255);
-  ellipse(position.x,position.y,10,10);
+  h.ellipse(position.x,position.y,10,10);
   
 }
 

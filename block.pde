@@ -44,7 +44,10 @@ class block{//Declare the block class
   void drawAct(){
    if(Skillcheck == true){
     fill(150);
-    rect(position.x,position.y,20,20);
+    h.rect(position.x,position.y,20,20);
+    fill(0);
+    h.rect(position.x,position.y + 9,20,2);
+    h.rect(position.x + 9,position.y ,2,20);
     position.y += 1;
    
     }
