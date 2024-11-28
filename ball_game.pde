@@ -70,6 +70,7 @@ void draw(){
   if(active == true){
   rectMode(CENTER);//Change the rectangle mode to center
   background(0,0,107);//Draw a blue background
+  MYtriangle(random(width),random(height),random(width),random(height),random(width),random(height));
   //ground
   fill(149,127,81);//Set the fill color of the graph to brown
   rect(200,360,400,80);//Draw a yellow ground
@@ -132,6 +133,8 @@ void draw(){
  
 }
 
+
+
 //game over UI-----------------------------------------------------------------------------------
 if(gameover == true && active == false){
 
@@ -173,5 +176,14 @@ if (mouseX <= hitboxSX+hitboxW && mouseX > hitboxSX && mouseY <= hitboxSY + hitb
   active = true;
 
   } 
+
+}
+
+
+void MYtriangle(float x1,float y1,float x2,float y2,float x3,float y3){
+  
+  fill(random(0,255),random(0,255),random(0,255),20);
+  
+  triangle(x1+random(0,2),y1+random(0,2),x2+random(0,2),y2+random(0,2),x3+random(0,2),y3+random(0,2));
 
 }

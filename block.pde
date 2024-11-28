@@ -25,20 +25,20 @@ class block{//Declare the block class
   //Here is the function for drawing blocks 
   fill(170);
   stroke(0,0);
-  rect(wallX,wallY+3,27,21);
+  h.rect(wallX,wallY+3,27,21);
   
   fill(120);
-  rect(wallX+9,wallY+9,3,9);
-  rect(wallX+14,wallY+18,6,3);
-  rect(wallX+23,wallY+18,3,3);
+  h.rect(wallX+9,wallY+9,3,9);
+  h.rect(wallX+14,wallY+18,6,3);
+  h.rect(wallX+23,wallY+18,3,3);
   
   
   fill(100);
-  rect(wallX,wallY,27,3);
-  rect(wallX,wallY+21,3,3);
-  rect(wallX-3,wallY+3,3,21);
-  rect(wallX-3,wallY+24,33,3);
-  rect(wallX+27,wallY+3,3,21);
+  h.rect(wallX,wallY,27,3);
+  h.rect(wallX,wallY+21,3,3);
+  h.rect(wallX-3,wallY+3,3,21);
+  h.rect(wallX-3,wallY+24,33,3);
+  h.rect(wallX+27,wallY+3,3,21);
     }
   }
   void drawAct(){
