@@ -1,5 +1,6 @@
 board board1;
 block block1;
+int haveballs = 3;
 float hitboxW = 100;
 float hitboxH = 30;
 float hitboxSX = 200;
@@ -12,7 +13,7 @@ boolean gameover;
 boolean gamewin;
 PVector location;
 PVector velocity;
-String i = "Start";
+String start = "Start";
 ArrayList<ball> balls = new ArrayList<ball>(); //Set ball array
 block[] blocks = new block[11];//set block array
 
@@ -66,7 +67,7 @@ void draw(){
   fill(255);
   h.rect(hitboxSX, hitboxSY, hitboxW, hitboxH);
   fill(0);
-  text(i,238,211,100,30);
+  text(start,238,211,100,30);
   }
   
   
@@ -97,13 +98,26 @@ void draw(){
 }
   
   //draw balls
-  for (int i = 0; i < balls.size(); i++) {//Use the for loop to iterate through the group to generate the ball
+  for (int i = balls.size() - 1; i >= 0; i--) {//Use the for loop to iterate through the group to generate the ball
     
     balls.get(i).drawball();//Reference the braw in the ball class to draw the position of the ball
     balls.get(i).move();//Update the position of the ball by referring to the move function in the ball class
     balls.get(i).checkedge(board1);//Reference the checkedge function in the ball class to determine if the ball is in contact with the board and wall
     balls.get(i).blockedge(blocks);//Reference the checkedge function in the ball class to determine if the ball is in contact with the block
-  }
+  
+      if(balls.get(i).position.y > height-20){
+      balls.remove(i);
+        if(balls.size() == 0) {
+        haveballs --;
+          if(haveballs >= 0){
+            balls.add(new ball());
+          }else{
+          gameover = true;
+          active = false;
+          }
+        }
+      }
+    }
   
   //ground
   rectMode(CENTER);
@@ -149,9 +163,11 @@ void draw(){
   active = false;
   
   }
- 
- 
+String count = "Balls:" + haveballs;
+fill(255);
+text(count,65,65,100,100); 
 }
+
 
 
 //game win UI-------------------------------------------------------------------------
