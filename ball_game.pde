@@ -7,7 +7,9 @@ float hitboxSY = 200;
 boolean leftmove;
 boolean rightmove;
 boolean active;
+boolean blockcheck;
 boolean gameover;
+boolean gamewin;
 PVector location;
 PVector velocity;
 String i = "Start";
@@ -41,7 +43,9 @@ void setup(){
  board1 = new board(location.x,location.y);//Declare the board1 is board class
  
  active = false;
+ gamewin = false;
  gameover = false;
+ 
  
  //Initialize block array
  for(int a = 0; a < blocks.length; a++){
@@ -130,14 +134,34 @@ void draw(){
   location.add(velocity);//Increasing the value of velocity on the location of the board has achieved the purpose of moving
  
   board1.position.x = location.x;//Control X movement
+  
+  blockcheck = true;
+  for(int a = 0; a < blocks.length; a++){
+    if(blocks[a].alive){
+      blockcheck = false;
+      break;
+    }
+  
+  }
+  
+  if(blockcheck == true){
+  gamewin = true;
+  active = false;
+  
+  }
+ 
  
 }
 
 
+//game win UI-------------------------------------------------------------------------
+if(gamewin == true && active == false){
+background(255);
 
+}
 //game over UI-----------------------------------------------------------------------------------
 if(gameover == true && active == false){
-
+background(0, 0, 0);
 
  
   }
