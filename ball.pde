@@ -51,7 +51,7 @@ void checkedge(board a){//Check whether it meets the ejection standard and perfo
       if(blocks[a].checkball(position)){//Here we refer to the checkball function in the block to detect the collision between the ball and the block
         
        velocity.y *= -1;
-       velocity.add(acceleration);
+       velocity.add(acceleration);//Set the ball to perform a tiny acceleration every time it destroys a block
        
        break;//Exit the loop after ejection to avoid bugs
       }

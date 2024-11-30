@@ -14,7 +14,7 @@ void drawboard(){
   rect(position.x,position.y,40,10);
   
  }
- 
+ //When the skill pack touches the board, it passes the information to the main program to trigger the effect
 boolean Checkskill(block skill) {
     if(skill.Skillcheck && skill.position.y + 10 >= position.y - 5 && skill.position.x > position.x - 20 && skill.position.x < position.x + 20 ){
       skill.Skillcheck = false;

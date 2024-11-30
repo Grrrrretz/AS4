@@ -41,6 +41,7 @@ class block{//Declare the block class
   h.rect(wallX+27,wallY+3,3,21);
     }
   }
+  //Draw the skill pack and let it fall every frame
   void drawAct(){
    if(Skillcheck == true){
     fill(150);
@@ -52,6 +53,7 @@ class block{//Declare the block class
    
     }
   }
+  //Random numbers are extracted when the block is destroyed. After the conditions are met, skill packs will be generated to achieve the random generation effect after the block is destroyed
   void Checkcondition(){
     if(alive == false){
       XValue = random(0,2);
@@ -61,6 +63,7 @@ class block{//Declare the block class
        }
     }
   }
+  //Generate skill pack
   void MakeAct(){
      Skillcheck = true;
     
