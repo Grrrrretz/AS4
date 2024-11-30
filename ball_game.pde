@@ -5,6 +5,12 @@ float hitboxW = 100;
 float hitboxH = 30;
 float hitboxSX = 200;
 float hitboxSY = 200;
+
+float hitboxW2 = 70;
+float hitboxH2 = 70;
+float hitboxRX = 165;
+float hitboxRY = 300;
+
 boolean leftmove;
 boolean rightmove;
 boolean active;
@@ -13,6 +19,8 @@ boolean gameover;
 boolean gamewin;
 PVector location;
 PVector velocity;
+PImage gameoverIMG;
+PImage restartIMG;
 String start = "Start";
 ArrayList<ball> balls = new ArrayList<ball>(); //Set ball array
 block[] blocks = new block[11];//set block array
@@ -25,6 +33,9 @@ void setup(){
   
   //set size
  size(400,400);
+ 
+ gameoverIMG = loadImage("Gameover.jpg");
+ restartIMG = loadImage("RESTART.png");
  
  h = new HandyRenderer(this);
  
@@ -62,7 +73,13 @@ void setup(){
 
 void draw(){
   //game mian UI---------------------------------------------------------------------------
-  if(gameover == false && active == false){
+  if(gameover == false && active == false && gamewin == false){
+    
+   background(0,0,107);//Draw a blue background
+  //ground
+  fill(149,127,81);//Set the fill color of the graph to brown
+  h.rect(200,360,400,80);//Draw a yellow ground
+ 
   
   fill(255);
   h.rect(hitboxSX, hitboxSY, hitboxW, hitboxH);
@@ -177,9 +194,9 @@ background(255);
 }
 //game over UI-----------------------------------------------------------------------------------
 if(gameover == true && active == false){
-background(0, 0, 0);
-
- 
+background(255);
+image(gameoverIMG, 0, 0, width, height);
+image(restartIMG, 165,300, 70, 70); 
   }
 }
 
@@ -215,6 +232,24 @@ if (mouseX <= hitboxSX+hitboxW && mouseX > hitboxSX && mouseY <= hitboxSY + hitb
     
   active = true;
 
+  } if (mouseX <= hitboxRX+hitboxW2 && mouseX > hitboxRX && mouseY <= hitboxRY + hitboxH2 && mouseY > hitboxRY) {
+    
+  gameover = false;
+  active = false;
+  gamewin = false;
+  haveballs = 3;
+  
+  for(int a = 0; a < blocks.length; a++){
+    blocks[a] = new block();
+  }
+  
+  balls.clear();
+  balls.add(new ball());
+  
+  location = new PVector(100,300);
+  
+  velocity = new PVector(0,0);
+  
   } 
 
 }
