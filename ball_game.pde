@@ -21,6 +21,7 @@ PVector location;
 PVector velocity;
 PImage gameoverIMG;
 PImage restartIMG;
+PImage winIMG;
 String start = "Start";
 ArrayList<ball> balls = new ArrayList<ball>(); //Set ball array
 block[] blocks = new block[11];//set block array
@@ -36,6 +37,7 @@ void setup(){
  
  gameoverIMG = loadImage("Gameover.jpg");
  restartIMG = loadImage("RESTART.png");
+ winIMG = loadImage("winIMG.jpg");
  
  h = new HandyRenderer(this);
  
@@ -190,7 +192,8 @@ text(count,65,65,100,100);
 //game win UI-------------------------------------------------------------------------
 if(gamewin == true && active == false){
 background(255);
-
+image(winIMG, 0, 0, width, height);
+image(restartIMG, 165,300, 70, 70); 
 }
 //game over UI-----------------------------------------------------------------------------------
 if(gameover == true && active == false){
